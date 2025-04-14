@@ -27,7 +27,7 @@ sealed class Screen(val route: String) {
 fun AppNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
     NavHost(navController = navController, startDestination = Screen.Home.route) {
 
-        // 🏠 Home Screen
+
         composable(Screen.Home.route) {
             HomeScreen(
                 viewModel = viewModel,
@@ -39,7 +39,7 @@ fun AppNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
             )
         }
 
-        // ➕ Add Task Screen (Create mode)
+  
         composable(Screen.AddTask.route) {
             AddEditTaskScreen(
                 viewModel = viewModel,
@@ -48,7 +48,7 @@ fun AppNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
             )
         }
 
-        // 📝 Edit Task Screen
+
         composable(Screen.EditTask.route) { backStackEntry ->
             val taskJson = backStackEntry.arguments?.getString("task")
             val task = Gson().fromJson(taskJson, Task::class.java)
@@ -60,7 +60,7 @@ fun AppNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
             )
         }
 
-        // 📄 Task Detail Screen
+        
         composable(Screen.TaskDetail.route) { backStackEntry ->
             val taskJson = backStackEntry.arguments?.getString("task")
             val task = Gson().fromJson(taskJson, Task::class.java)
